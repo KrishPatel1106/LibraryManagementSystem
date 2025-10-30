@@ -1,0 +1,47 @@
+@model IEnumerable<LibraryManagementSystem.Models.Transaction>
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">🔄 Transactions</h2>
+
+    <div class="text-end mb-3">
+        <a asp-action="Issue" class="btn btn-primary">📘 Issue New Book</a>
+    </div>
+
+    <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Book Title</th>
+                <th>Member</th>
+                <th>Issue Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.Book?.Title</td>
+                    <td>@t.Member?.Name</td>
+                    <td>@t.IssueDate.ToShortDateString()</td>
+                    <td>@(t.ReturnDate?.ToShortDateString() ?? "Not Returned")</td>
+                    <td>
+                        @(t.IsReturned ? "✅ Returned" : "⏳ Issued")
+                    </td>
+                    <td>
+                        @if (!t.IsReturned)
+                        {
+                            <a asp-action="Return" asp-route-id="@t.Id" class="btn btn-sm btn-success">📦 Return</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">⬅️ Back to Dashboard</a>
+</div>

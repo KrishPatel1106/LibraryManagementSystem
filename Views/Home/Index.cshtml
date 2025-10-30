@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">📚 Library Management Dashboard</h1>
+
+    <div class="row text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-primary">
+                <div class="card-body">
+                    <h4 class="card-title text-primary">Total Books</h4>
+                    <h2>@ViewBag.TotalBooks</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-success">
+                <div class="card-body">
+                    <h4 class="card-title text-success">Total Members</h4>
+                    <h2>@ViewBag.TotalMembers</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-warning">
+                <div class="card-body">
+                    <h4 class="card-title text-warning">Books Issued</h4>
+                    <h2>@ViewBag.IssuedCount</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card shadow border-info">
+                <div class="card-body">
+                    <h4 class="card-title text-info">Books Returned</h4>
+                    <h2>@ViewBag.ReturnedCount</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-controller="Books" asp-action="Index" class="btn btn-primary me-2">📚 Manage Books</a>
+        <a asp-controller="Members" asp-action="Index" class="btn btn-success me-2">👥 Manage Members</a>
+        <a asp-controller="Transactions" asp-action="Index" class="btn btn-warning">🔄 Transactions</a>
+    </div>
+</div>

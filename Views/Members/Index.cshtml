@@ -1,0 +1,38 @@
+@model IEnumerable<LibraryManagementSystem.Models.Member>
+@{
+    ViewData["Title"] = "Members";
+}
+
+<h2 class="mb-3 text-center">👥 Manage Members</h2>
+
+<div class="text-end mb-3">
+    <a href="/Members/Add" class="btn btn-success">➕ Add Member</a>
+</div>
+
+<table class="table table-bordered table-striped shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.Email</td>
+                <td>
+                    <a href="/Members/Edit/@member.Id" class="btn btn-sm btn-primary">✏️ Edit</a>
+                    <a href="/Members/Delete/@member.Id" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this member?');">🗑️ Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center mt-3">
+    <a href="/" class="btn btn-secondary">⬅️ Back to Dashboard</a>
+</div>

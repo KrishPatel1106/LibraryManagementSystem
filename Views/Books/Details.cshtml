@@ -1,0 +1,26 @@
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-3">📖 Book Details</h2>
+
+        <dl class="row">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Author</dt>
+            <dd class="col-sm-9">@Model.Author</dd>
+
+            <dt class="col-sm-3">Available</dt>
+            <dd class="col-sm-9">@(Model.IsAvailable ? "✅ Yes" : "❌ No")</dd>
+        </dl>
+
+        <div class="text-center">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">✏️ Edit</a>
+            <a asp-action="Index" class="btn btn-secondary ms-2">⬅️ Back to List</a>
+        </div>
+    </div>
+</div>

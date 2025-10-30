@@ -1,0 +1,29 @@
+@model LibraryManagementSystem.Models.Transaction
+@{
+    ViewData["Title"] = "Return Book";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📦 Return Book</h2>
+
+    <div class="card shadow p-4">
+        <h5>Are you sure you want to return this book?</h5>
+
+        <dl class="row mt-3">
+            <dt class="col-sm-3">Book</dt>
+            <dd class="col-sm-9">@Model.Book?.Title</dd>
+
+            <dt class="col-sm-3">Member</dt>
+            <dd class="col-sm-9">@Model.Member?.Name</dd>
+
+            <dt class="col-sm-3">Issued On</dt>
+            <dd class="col-sm-9">@Model.IssueDate.ToShortDateString()</dd>
+        </dl>
+
+        <form asp-action="ReturnConfirmed" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-success">✅ Confirm Return</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">⬅️ Cancel</a>
+        </form>
+    </div>
+</div>
